@@ -4,7 +4,7 @@ const package = require('./package.json');
 
 package.dependencies = {}
 
-names.forEach((name) => { package.dependencies[name] = 'latest' })
+names.forEach((name) => { package.dependencies[name.replaceAll(' ','')] = 'latest' })
 
 fs = require('fs')
 fs.writeFile('package.json', JSON.stringify(package, null, 2), function (err,data) {
