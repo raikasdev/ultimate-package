@@ -13,12 +13,12 @@ function urlFriendly(name) {
 }
 function validScopedName(name) {
   const nameMatch = name.match(scopedPackagePattern)
-  if (nameMatch && !name.includes('_')) {
+  if (nameMatch) {
     return urlFriendly(nameMatch[1]) && urlFriendly(nameMatch[1])
   }
 }
 function validName(name) {
-  return name.length > 0 && (urlFriendly(name) || validScopedName(name));
+  return name.length > 0 && (urlFriendly(name) || validScopedName(name)) && !name.includes('_');
 }
 
 function sanitize(name) {
